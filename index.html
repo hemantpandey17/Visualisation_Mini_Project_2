@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang ="en">
+
+	<head>
+		<meta charset="utf-8">
+    	<title>Just Another Cool Visualization Project</title>
+		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+
+		<script src="scatterplot.js"></script>
+		<script src = "scatterplot_matrix.js"></script>   	 
+		<script src = "scree_plot.js"></script>
+		<script src = "bar_chart.js"></script>
+
+	</head>
+	<body onload="plot_values('pca.csv')">
+
+		<style>
+		body {
+			font-size: 14px;
+		}
+
+		svg {
+  		font: 14px sans-serif;
+  		padding: 10px;
+		}
+
+		.axis line {
+			stroke: black;
+			stroke-width: 1px;
+		}
+
+		.axis-sm,
+		.frame {
+  		shape-rendering: crispEdges;
+		}
+
+		.axis-sm line {
+  		stroke: #ddd;
+		}
+
+		.axis-sm path {
+  		display: none;
+		}
+
+		.cell text {
+  		font-weight: bold;
+  		text-transform: capitalize;
+		}
+
+		.frame {
+  		fill: none;
+  		stroke: #aaa;
+		}
+
+		circle {
+  		fill-opacity: .7;
+		}
+
+		circle.hidden {
+  		fill: #ccc !important;
+		}
+	
+		.extent {
+ 		fill: #000;
+  		fill-opacity: .125;
+  		stroke: #fff;
+		}
+
+		   
+		 	input[type=text] {
+		    padding:5px; 
+		    border:2px solid #ccc; 
+		    -webkit-border-radius: 5px;
+		    border-radius: 5px;
+			}
+
+			input[type=text]:focus {
+			    border-color:#333;
+			}
+
+			button, input[type=button], input[type=submit]{
+			        
+    		float: center;
+    		border: 1px solid green;
+			}
+			
+			.bar {
+ 			 fill: steelblue;
+			}
+
+			.bar:hover {
+  			fill: brown;
+			}
+
+			.axis--x path {
+ 			 display: none;
+			}
+		</style>
+
+
+
+	<fieldset>
+	<legend><b><font color="Blue"> Random Person (Visualisation Project 2)</font></b></legend>
+	<center>
+	<br>
+	<br>
+	  <button onclick="plot_values('pca.csv')" type="button" style="width: 150px; height: 30px">PCA</button>
+       
+      <button onclick="plot_values('correlation.csv')" type="button" style="width: 150px; height: 30px">MDS Correlation</button>
+      <button onclick="plot_values('euclidean.csv')" type="button" style="width: 150px; height: 30px">MDS Euclidean</button>
+      <button onclick = "plot_matrix('three.csv')" type="button" style="width: 150px; height: 30px">PCA3</button>
+      <button onclick="plot_scree('eigen.csv')" type="button" style="width: 150px; height: 30px">Eigen</button>
+      <button onclick="plot_scree('elbow.csv')" type="button" style="width: 150px; height: 30px">Elbow</button>
+      <button onclick="drawBarChart('loading.csv','random')" type="button" style="width: 150px; height: 30px">Loadings (Random)</button>
+      <button onclick="drawBarChart('loading.csv','stratified')" type="button" style="width: 150px; height: 30px">Loadings (Stratified)</button>
+
+      <br>
+      <br><br>
+
+	<div id  = "scatter_plot"></div>
+	<br>
+	<br>
+	<br>
+	<script type="text/javascript">
+
+  	var w = 940;
+    var h = 700;
+    var pad = 20;
+    var left_pad = 100;
+    var typeArr = ['random','stratified'];
+
+    var svg = d3.select("#scatter_plot")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+    function refresh() {
+        svg.attr("width", w)
+        .attr("height", h);
+    }
+
+</script>
+</center>
+	 
+  </fieldset>
+  </body>
+</html>
+		
+	 
